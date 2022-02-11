@@ -15,6 +15,7 @@ const PreviewContainer = styled.div`
     width: 100%;
     min-width: 1000px;
     height: 100vh;
+    background-color: #202c37;
 `
 
 const PreviewTitle = styled.div`
@@ -138,7 +139,7 @@ const Preview = () => {
 
   return (
     <PreviewContainer>
-      <Header name="Minky Stove Dev Blog"></Header>
+      <Header name="ProConnect"></Header>
       <PreviewTitle>
         전체 글
       </PreviewTitle>

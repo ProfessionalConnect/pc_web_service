@@ -49,7 +49,7 @@ const NotFocusButton = styled.div`
     align-items: center;
     width: 30px;
     height: 30px;
-    color: #807f89;
+    color: #58ab54;
     font-size: 16px;
     font-family: Noto Sans KR;
     margin-left: 4px;
