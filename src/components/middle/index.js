@@ -24,14 +24,14 @@ const ContactBox = styled.div`
 `
 
 const ContactTitle = styled.div`
-    color: #eeeeee;
+    color: #202c37;
     font-size: 1em;
     font-family: Noto Sans KR;
     padding-bottom: 14px;
 `
 
 const ContactDesc = styled.div`
-    color: #eeeeee;
+    color: #202c37;
     font-size: 0.9em;
     font-family: Noto Sans KR;
 `
@@ -43,14 +43,14 @@ const GitBox = styled.div`
 `
 
 const GitTitle = styled.div`
-    color: #eeeeee;
+    color: #202c37;
     font-size: 1em;
     font-family: Noto Sans KR;
     padding-bottom: 14px;
 `
 
 const GitLink = styled.a`
-    color: #eeeeee;
+    color: #202c37;
     font-size: 0.9em;
     font-family: Noto Sans KR;
 `
@@ -62,7 +62,7 @@ const EditBox = styled.div`
 `
 
 const EditTitle = styled.div`
-    color: #eeeeee;
+    color: #202c37;
     font-size: 1em;
     font-family: Noto Sans KR;
     padding-bottom: 14px;

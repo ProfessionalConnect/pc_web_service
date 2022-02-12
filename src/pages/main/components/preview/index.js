@@ -15,7 +15,6 @@ const PreviewContainer = styled.div`
     width: 100%;
     min-width: 1000px;
     height: 100vh;
-    background-color: #202c37;
 `
 
 const PreviewTitle = styled.div`

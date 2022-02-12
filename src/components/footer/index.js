@@ -8,7 +8,7 @@ const FooterContainer = styled.div`
     justify-content: center;
     min-height: 50px;
     width: 100%;
-    color: #eeeeee;
+    color: #202c37;
     font-size: 0.8em;
     font-family: Noto Sans KR;
 `

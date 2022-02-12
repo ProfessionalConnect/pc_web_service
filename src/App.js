@@ -5,6 +5,7 @@ import Main from './pages/main'
 import NewPost from './pages/post/new'
 import OldPost from './pages/post/old'
 import Board from './pages/board'
+import Login from './pages/login'
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
       <Switch>
         <Route exact path="/main">
           <Main />
+        </Route>
+        <Route exact path="/login">
+          <Login />
         </Route>
         <Route exact path="/post/new">
           <NewPost />

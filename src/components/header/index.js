@@ -14,7 +14,7 @@ const HeaderContainer = styled.div`
 `
 
 const HeaderElement = styled.div`
-    color: #eeeeee;
+    color: #202c37;
     font-size: 2em;
     font-family: Noto Sans KR;
     cursor: pointer
