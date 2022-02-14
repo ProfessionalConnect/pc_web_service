@@ -1,12 +1,8 @@
 import { postNoHeader } from '../../../../utils/api';
 import { redirect } from '../../../../utils/redirect';
-import moment from 'moment-timezone';
 import React from 'react'
 import styled from 'styled-components';
-import Header from '../../../../components/header'
-import Middle from '../../../../components/middle'
-import Footer from '../../../../components/footer'
-import PageBar from '../../../../components/pagebar'
+import { setCookie } from '../../../../utils/cookie';
 
 const LoginViewContainer = styled.div`
     display: flex;
@@ -92,8 +88,8 @@ const LoginButton = styled.button`
 `
 
 const LoginView = () => {
-  const [email, setEmail] = React.useState(null)
-  const [password, setPassword] = React.useState(null)
+  const [email, setEmail] = React.useState("")
+  const [password, setPassword] = React.useState("")
 
   const handleEmail = (event) => {
     setEmail(event.target.value)
@@ -110,7 +106,7 @@ const LoginView = () => {
     }
 
     if (password.replace(/\s/g, "") === "") {
-      alert("비밀번호흫 입력해주세요")
+      alert("비밀번호를 입력해주세요")
       return
     }
 
@@ -126,8 +122,11 @@ const LoginView = () => {
       body: payload
     })
       .then(response => {
-        alert("로그인 성공")
-        // redirect("/main")
+        setCookie("access_token", response.data.accessToken, 1)
+        setCookie("refresh_token", response.data.refreshToken, 1)
+        setCookie("uuid", response.data.uuid, 1)
+        setCookie("role", response.data.userRole, 1)
+        redirect("/setting")
       }).catch(error => {
         alert("로그인 실패")
       })

@@ -6,6 +6,7 @@ import NewPost from './pages/post/new'
 import OldPost from './pages/post/old'
 import Board from './pages/board'
 import Login from './pages/login'
+import Setting from './pages/setting'
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         </Route>
         <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/setting">
+          <Setting />
         </Route>
         <Route exact path="/post/new">
           <NewPost />
