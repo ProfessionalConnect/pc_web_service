@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Header from '../../../../components/header'
 import Middle from '../../../../components/middle'
 import Footer from '../../../../components/footer'
+import { getCookie } from '../../../../utils/cookie';
 import PageBar from '../../../../components/pagebar'
 
 const PreviewContainer = styled.div`
@@ -26,7 +27,7 @@ const PreviewTitle = styled.div`
 const BoardContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 800px;
+    width: 600px;
     margin-top: 80px;
     margin-bottom: auto;
 `
@@ -49,8 +50,8 @@ const BoardElement = styled.div`
 `
 
 const BoardThumbail = styled.img`
-    width: 192px;
-    height: 192px;
+    width: 140px;
+    height: 140px;
     margin-right: 24px;
     background: #D7DBD1;
 `
@@ -95,10 +96,15 @@ const BoardDesc = styled.div`
     margin-bottom: 20px;
 `
 
+const ButtonWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+
 const BoardButton = styled.button`
     width: 102px;
     height: 35px;
-    background: #ff5000;
+    background: #58ab54;
     color: white;
     font-size: 14px;
     font-weight: bold;
@@ -110,67 +116,80 @@ const BoardButton = styled.button`
     border: 0;
 `
 
-const Preview = () => {
-  const [boards, setBoards] = React.useState(null)
+const Preview = ({ id }) => {
+  const [subjects, setSubjects] = React.useState(null)
   const [totalPage, setTotalPage] = React.useState(0)
   const [page, setPage] = React.useState(0)
+  const [role, setRole] = React.useState(getCookie("role"))
 
-  const getBoards = () => {
-    get(`/api/v1/boards?page=${page}`, {})
+  const getSubjects = () => {
+    get(`/api/v1/subjects/ms/teams/${id}?page=${page}`, {
+      headers: {
+        "X-AUTH-TOKEN": getCookie("access_token"),
+      }
+    })
       .then(response => {
         setTotalPage(response.data.totalPages)
         if (response.data.numberOfElements !== 0) {
-          setBoards(response.data.content)
+          setSubjects(response.data.content)
         }
       })
       .catch(error => {
-        alert("알 수 없는 오류가 발생하였습니다. 아래 이메일로 문의해주세요.")
+        if (error.response.status === 503) {
+          alert("시스템 준비 중입니다. 아래 이메일로 문의해주세요.")
+        } else if (error.response.status === 401) {
+          redirect("/login")
+        } else {
+          alert("알 수 없는 오류가 발생하였습니다. 아래 이메일로 문의해주세요.")
+        }
       })
   }
 
-  const handleImgError = (e) => {
-    e.target.src = "default.png";
-  }
-
   React.useEffect(() => {
-    getBoards()
+    getSubjects()
   }, [page])
 
   return (
     <PreviewContainer>
       <Header name="ProConnect"></Header>
       <PreviewTitle>
-        전체 글
+        전체 과제
       </PreviewTitle>
       <BoardContainer>
-        {boards && boards.map((element, index) => {
+        {subjects && subjects.map((element, index) => {
           const id = element.id
-          var thumbnailUrl = element.thumbnailUrl
+          // var thumbnailUrl = element.thumbnailUrl
           var startMonent = moment(element.createdDate)
             .tz("Asia/Seoul")
             .format("YYYY.MM.DD HH:mm")
-          if (thumbnailUrl === null || thumbnailUrl === "") {
-            thumbnailUrl = "default.png"
-          }
+          // if (thumbnailUrl === null || thumbnailUrl === "") {
+          //   thumbnailUrl = "default.png"
+          // }
 
           return (
             <BoardElement key={index}>
               <BoardThumbail
-                src={thumbnailUrl}
-                alt="thumbnail_img"
-                onError={handleImgError}
+                src={`${process.env.PUBLIC_URL}/default.png`}
               />
               <BoardBody>
                 <BoardTitle>{element.title}</BoardTitle>
                 <BoardTime>{startMonent}</BoardTime>
-                <BoardDesc>{element.body}</BoardDesc>
-                <BoardButton onClick={() => { redirect(`/board/${id}`) }}>자세히 보기</BoardButton>
+                <BoardDesc>{element.description}</BoardDesc>
+                <ButtonWrapper>
+                  {role === "PRO" && <BoardButton onClick={() => { alert("준비중입니다") }}>과제 수정</BoardButton>}
+                  {role === "PRO" && <BoardButton
+                    style={{ marginLeft: "10px" }}
+                    onClick={() => { redirect(`/subject/${id}`) }}>
+                    학생 결과 보기
+                  </BoardButton>}
+                  {role !== "PRO" && <BoardButton onClick={() => { redirect(`/grade/${id}`) }}>과제 풀기</BoardButton>}
+                </ButtonWrapper>
               </BoardBody>
             </BoardElement>
           )
         })}
         {
-          !boards && (
+          (!subjects || subjects.length === 0) && (
             <NoContentElement>
               게시물이 없습니다.
             </NoContentElement>
@@ -178,7 +197,7 @@ const Preview = () => {
         }
         {totalPage !== 0 && <PageBar page={page} setPage={setPage} totalPage={totalPage}></PageBar>}
       </BoardContainer>
-      <Middle isEdit={true} />
+      <Middle isEdit={role === "PRO"} redirectURL="new/subject" />
       <Footer />
     </PreviewContainer>
   );

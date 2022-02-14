@@ -37,7 +37,7 @@ const FocusButton = styled.div`
     font-size: 16px;
     font-family: Noto Sans KR;
     border-radius: 100px;
-    background: #eca4a6;
+    background: #58ab54;
     margin-left: 4px;
     margin-right: 4px;
 `

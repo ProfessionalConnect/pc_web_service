@@ -135,7 +135,7 @@ const LoginView = () => {
   return (
     <LoginViewContainer>
       <LoginBox>
-        <ConnectImage src="./logo512.png" />
+        <ConnectImage src={`${process.env.PUBLIC_URL}/logo512.png`} />
         <ConnectTitle>ProConnect</ConnectTitle>
         <InputWrapper>
           <DescriptImage src="./icn_account.png" />

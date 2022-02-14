@@ -141,7 +141,13 @@ const SettingView = () => {
         setTeams(teamList)
       })
       .catch(error => {
-        alert("알 수 없는 오류가 발생하였습니다. 아래 이메일로 문의해주세요.")
+        if (error.response.status === 500) {
+          alert("시스템 준비 중입니다. 아래 이메일로 문의해주세요.")
+        } else if (error.response.status === 401) {
+          redirect("/login")
+        } else {
+          alert("알 수 없는 오류가 발생하였습니다. 아래 이메일로 문의해주세요.")
+        }
       })
   }
 
@@ -165,7 +171,13 @@ const SettingView = () => {
         setTeams(newTeams)
       })
       .catch(error => {
-        alert("코드가 잘못되었습니다. 팀 코드를 확인하세요.")
+        if (error.response.status === 503) {
+          alert("시스템 준비 중입니다. 아래 이메일로 문의해주세요.")
+        } else if (error.response.status === 401) {
+          redirect("/login")
+        } else {
+          alert("알 수 없는 오류가 발생하였습니다. 아래 이메일로 문의해주세요.")
+        }
       })
   }
 
@@ -202,10 +214,10 @@ const SettingView = () => {
           return (
             <TeamElement key={index}>
               <TeamBody>
-                <TeamThumbail src="/icn_teams.png" />
+                <TeamThumbail src={`${process.env.PUBLIC_URL}/icn_teams.png`} />
                 <TeamTitle>{element.teamName}</TeamTitle>
               </TeamBody>
-              <TeamButton onClick={() => { redirect(`/board/${id}`) }}>접속</TeamButton>
+              <TeamButton onClick={() => { redirect(`/team/${id}`) }}>접속</TeamButton>
             </TeamElement>
           )
         })}
@@ -217,7 +229,7 @@ const SettingView = () => {
           )
         }
       </TeamContainer>
-      <Middle isEdit={false} />
+      <Middle isEdit={role === "PRO"} redirectURL="new/team" />
       <Footer />
     </SettingContainer>
   );

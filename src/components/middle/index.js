@@ -77,7 +77,7 @@ const EditIcon = styled.img`
     cursor: pointer;
 `
 
-const Middle = ({ isEdit }) => {
+const Middle = ({ isEdit, redirectURL }) => {
   return (
     <MiddleContainer>
       <MiddleBox>
@@ -92,7 +92,7 @@ const Middle = ({ isEdit }) => {
         {isEdit && (
           <EditBox>
             <EditTitle>New Post</EditTitle>
-            <EditIcon src="icn_create.png" onClick={() => { redirect("/post/new") }}></EditIcon>
+            <EditIcon src={`${process.env.PUBLIC_URL}/icn_create.png`} onClick={() => { redirect(redirectURL) }}></EditIcon>
           </EditBox>
         )}
       </MiddleBox>
