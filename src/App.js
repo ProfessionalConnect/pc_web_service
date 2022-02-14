@@ -7,6 +7,7 @@ import OldPost from './pages/post/old'
 import Board from './pages/board'
 import Login from './pages/login'
 import Setting from './pages/setting'
+import Subject from './pages/subject'
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
       <Switch>
         <Route exact path="/team/:id">
           <Team />
+        </Route>
+        <Route exact path="/subject/:id">
+          <Subject />
         </Route>
         <Route exact path="/login">
           <Login />

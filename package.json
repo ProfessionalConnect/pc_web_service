@@ -6,6 +6,7 @@
         "@testing-library/jest-dom": "^5.11.4",
         "@testing-library/react": "^11.1.0",
         "@testing-library/user-event": "^12.1.10",
+        "@uiw/react-textarea-code-editor": "^1.4.16",
         "aws-sdk": "^2.1020.0",
         "axios": "^0.21.4",
         "moment": "^2.29.1",

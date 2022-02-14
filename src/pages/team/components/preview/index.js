@@ -8,6 +8,7 @@ import Middle from '../../../../components/middle'
 import Footer from '../../../../components/footer'
 import { getCookie } from '../../../../utils/cookie';
 import PageBar from '../../../../components/pagebar'
+import PassIcon from '../../../../components/passicon'
 
 const PreviewContainer = styled.div`
     display: flex;
@@ -61,6 +62,12 @@ const BoardBody = styled.div`
     flex-direction: column;
 `
 
+const BoardTitleWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`
+
 const BoardTitle = styled.div`
     display: flex;
     flex-direction: row;
@@ -71,7 +78,6 @@ const BoardTitle = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding: 8px 0 0 0;
 `
 
 const BoardTime = styled.div`
@@ -172,17 +178,20 @@ const Preview = ({ id }) => {
                 src={`${process.env.PUBLIC_URL}/default.png`}
               />
               <BoardBody>
-                <BoardTitle>{element.title}</BoardTitle>
+                <BoardTitleWrapper>
+                  <BoardTitle>{element.title}</BoardTitle>
+                  <PassIcon isPass={element.isPass} />
+                </BoardTitleWrapper>
                 <BoardTime>{startMonent}</BoardTime>
                 <BoardDesc>{element.description}</BoardDesc>
                 <ButtonWrapper>
                   {role === "PRO" && <BoardButton onClick={() => { alert("준비중입니다") }}>과제 수정</BoardButton>}
                   {role === "PRO" && <BoardButton
                     style={{ marginLeft: "10px" }}
-                    onClick={() => { redirect(`/subject/${id}`) }}>
+                    onClick={() => { redirect(`/grade/${id}`) }}>
                     학생 결과 보기
                   </BoardButton>}
-                  {role !== "PRO" && <BoardButton onClick={() => { redirect(`/grade/${id}`) }}>과제 풀기</BoardButton>}
+                  {role !== "PRO" && <BoardButton onClick={() => { redirect(`/subject/${id}`) }}>과제 풀기</BoardButton>}
                 </ButtonWrapper>
               </BoardBody>
             </BoardElement>
