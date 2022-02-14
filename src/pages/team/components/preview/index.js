@@ -8,7 +8,8 @@ import Middle from '../../../../components/middle'
 import Footer from '../../../../components/footer'
 import { getCookie } from '../../../../utils/cookie';
 import PageBar from '../../../../components/pagebar'
-import PassIcon from '../../../../components/passicon'
+import PassIcon from '../../../../components/icon/passicon'
+import CodeIcon from '../../../../components/icon/codeicon'
 
 const PreviewContainer = styled.div`
     display: flex;
@@ -181,6 +182,7 @@ const Preview = ({ id }) => {
                 <BoardTitleWrapper>
                   <BoardTitle>{element.title}</BoardTitle>
                   <PassIcon isPass={element.isPass} />
+                  <CodeIcon codeType={element.codeType} />
                 </BoardTitleWrapper>
                 <BoardTime>{startMonent}</BoardTime>
                 <BoardDesc>{element.description}</BoardDesc>

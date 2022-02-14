@@ -8,7 +8,8 @@ import Middle from '../../../../components/middle'
 import Footer from '../../../../components/footer'
 import NotFound from '../../../../components/notfound'
 import Editor from '../../../../components/editor'
-import PassIcon from '../../../../components/passicon'
+import PassIcon from '../../../../components/icon/passicon'
+import CodeIcon from '../../../../components/icon/codeicon'
 // import Comment from '../comment'
 import { getCookie } from '../../../../utils/cookie';
 
@@ -182,6 +183,7 @@ const DetailView = ({ id }) => {
               {title}
             </DetailViewTitleBox>
             <PassIcon isPass={isPass} />
+            <CodeIcon codeType={codeType} />
           </DetailViewTitleWrapper>
           <DetailViewTimeBox>{startMonentString}</DetailViewTimeBox>
           <DetailViewBox>
