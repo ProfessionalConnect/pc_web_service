@@ -101,7 +101,7 @@ const TeamTitle = styled.div`
     display: flex;
     flex-direction: row;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     font-family: Noto Sans KR;
     line-height: 34px;
     overflow: hidden;
