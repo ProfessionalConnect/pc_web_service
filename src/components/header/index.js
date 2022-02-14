@@ -23,7 +23,7 @@ const HeaderElement = styled.div`
 const Header = ({ name }) => {
   return (
     <HeaderContainer>
-      <HeaderElement onClick={() => { redirect("/main") }}>{name}</HeaderElement>
+      <HeaderElement onClick={() => { redirect("/setting") }}>{name}</HeaderElement>
     </HeaderContainer>
   );
 }
