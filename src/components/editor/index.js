@@ -1,7 +1,7 @@
 import React from 'react'
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
-const Editor = ({ code, setCode, codeType, minHeight }) => {
+const Editor = ({ code, setCode, codeType, minHeight, disabled }) => {
   const [realCodeType, setRealCodeType] = React.useState("c")
 
   React.useEffect(() => {
@@ -20,6 +20,7 @@ const Editor = ({ code, setCode, codeType, minHeight }) => {
 
   return (
     <CodeEditor
+      disabled={disabled}
       value={code}
       language={realCodeType}
       placeholder={`Please enter ${codeType} code.`}

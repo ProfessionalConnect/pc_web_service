@@ -85,7 +85,7 @@ const EditView = ({ id }) => {
 
   return (
     <NewSubjectViewContainer>
-      <Header name="New Subject"></Header>
+      <Header name="New Subject" redirectURL={`/team/${id}`}></Header>
       <SubjectWrite
         clickToUploadAction={uploadNewSubject}
         initTitle=""

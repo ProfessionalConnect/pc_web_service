@@ -20,10 +20,10 @@ const HeaderElement = styled.div`
     cursor: pointer
 `
 
-const Header = ({ name }) => {
+const Header = ({ name, redirectURL }) => {
   return (
     <HeaderContainer>
-      <HeaderElement onClick={() => { redirect("/setting") }}>{name}</HeaderElement>
+      <HeaderElement onClick={() => { redirect(redirectURL) }}>{name}</HeaderElement>
     </HeaderContainer>
   );
 }

@@ -79,6 +79,7 @@ const DetailViewEditBox = styled.div`
     color: #807f89;
     font-size: 14px;
     font-family: Noto Sans KR;
+    margin-left: auto;
 `
 
 const RegistButton = styled.button`
@@ -90,7 +91,7 @@ const RegistButton = styled.button`
     font-weight: bold;
     font-family: Noto Sans KR;
     cursor: pointer;
-    margin-left: auto;
+    margin-left: 10px;
     margin-bottom: 20px;
     outline: none;
     border: 0;
@@ -192,7 +193,7 @@ const DetailView = ({ id }) => {
 
   return (
     <DetailViewContainer>
-      <Header name="Subject"></Header>
+      <Header name="Subject" redirectURL="/setting"></Header>
       {notFoundFlag === 0 &&
         <DetailViewWrapper>
           <DetailViewTitleWrapper>
@@ -214,10 +215,17 @@ const DetailView = ({ id }) => {
               </DetailViewDescBox>
             </DescriptionWrapper>
             <CodeEditerWrapper>
-              <Editor code={code} setCode={setCode} codeType={codeType} minHeight="400px" />
+              <Editor
+                disabled={false}
+                code={code}
+                setCode={setCode}
+                codeType={codeType}
+                minHeight="400px"
+              />
             </CodeEditerWrapper>
           </DetailViewBox>
           <DetailViewEditBox>
+            <RegistButton onClick={() => { redirect(`/subject/grade/${id}`) }}>제출현황</RegistButton>
             <RegistButton onClick={registSubject}>제출하기</RegistButton>
           </DetailViewEditBox>
           {/* <Comment commentList={commentList} setCommentList={setCommentList} boardId={id}></Comment> */}

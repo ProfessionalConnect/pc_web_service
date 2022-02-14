@@ -220,7 +220,7 @@ const SettingView = () => {
 
   return (
     <SettingContainer>
-      <Header name="ProConnect"></Header>
+      <Header name="ProConnect" redirectURL="/setting"></Header>
       <SettingTitle>
         팀 목록
       </SettingTitle>

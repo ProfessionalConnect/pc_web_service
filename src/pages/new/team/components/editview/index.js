@@ -58,7 +58,7 @@ const EditView = () => {
 
   return (
     <NewTeamViewContainer>
-      <Header name="New Team"></Header>
+      <Header name="New Team" redirectURL="/setting"></Header>
       <TeamWrite
         clickToUploadAction={uploadNewTeam}
         initTitle=""

@@ -7,6 +7,7 @@ import NewSubject from './pages/new/subject'
 import Login from './pages/login'
 import Setting from './pages/setting'
 import Subject from './pages/subject'
+import SubjectGrade from './pages/grade/subject'
 import SignUp from './pages/signup'
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
         </Route>
         <Route exact path="/subject/:id">
           <Subject />
+        </Route>
+        <Route exact path="/subject/grade/:id">
+          <SubjectGrade />
         </Route>
         <Route exact path="/new/subject/:id">
           <NewSubject />
