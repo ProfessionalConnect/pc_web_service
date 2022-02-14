@@ -181,7 +181,7 @@ const Preview = ({ id }) => {
               <BoardBody>
                 <BoardTitleWrapper>
                   <BoardTitle>{element.title}</BoardTitle>
-                  <PassIcon isPass={element.isPass} />
+                  {role === "MEMBER" && <PassIcon isPass={element.isPass} />}
                   <CodeIcon codeType={element.codeType} />
                 </BoardTitleWrapper>
                 <BoardTime>{startMonent}</BoardTime>
