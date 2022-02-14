@@ -145,7 +145,11 @@ const Preview = ({ id }) => {
         if (error.response.status === 503) {
           alert("시스템 준비 중입니다. 아래 이메일로 문의해주세요.")
         } else if (error.response.status === 401) {
-          redirect("/login")
+          if (error.response.data === "") {
+            redirect("/login")
+          } else if (error.response.data.message === "[ERROR] You are not join this Team, check your team list") {
+            redirect("/setting")
+          }
         } else {
           alert("알 수 없는 오류가 발생하였습니다. 아래 이메일로 문의해주세요.")
         }
