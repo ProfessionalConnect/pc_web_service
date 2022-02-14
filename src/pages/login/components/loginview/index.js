@@ -42,6 +42,7 @@ const InputWrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 4px;
 `
 
 const DescriptImage = styled.img`
@@ -72,7 +73,16 @@ const PasswordInput = styled.input`
     overflow: hidden;
 `
 
-const LoginButton = styled.button`
+const ButtomWrapper = styled.div`
+    width: 220px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: 20px;
+`
+
+const Button = styled.button`
     width: 102px;
     height: 35px;
     background: #58ab54;
@@ -81,8 +91,6 @@ const LoginButton = styled.button`
     font-weight: bold;
     font-family: Noto Sans KR;
     cursor: pointer;
-    margin-top: auto;
-    margin-bottom: 20px;
     outline: none;
     border: 0;
 `
@@ -138,14 +146,17 @@ const LoginView = () => {
         <ConnectImage src={`${process.env.PUBLIC_URL}/logo512.png`} />
         <ConnectTitle>ProConnect</ConnectTitle>
         <InputWrapper>
-          <DescriptImage src="./icn_account.png" />
+          <DescriptImage src={`${process.env.PUBLIC_URL}/icn_account.png`} />
           <EmailInput onChange={handleEmail} placeholder="이메일을 입력하세요"></EmailInput>
         </InputWrapper>
         <InputWrapper>
-          <DescriptImage src="./icn_pwd.png" />
+          <DescriptImage src={`${process.env.PUBLIC_URL}/icn_pwd.png`} />
           <PasswordInput type="password" onChange={handlePassword} placeholder="비밀번호를 입력하세요"></PasswordInput>
         </InputWrapper>
-        <LoginButton onClick={clickToLogin}>로그인</LoginButton>
+        <ButtomWrapper>
+          <Button onClick={clickToLogin}>로그인</Button>
+          <Button onClick={() => { redirect("/signup") }}>회원가입</Button>
+        </ButtomWrapper>
       </LoginBox>
     </LoginViewContainer>
   );

@@ -113,6 +113,7 @@ const SubjectWrite = ({
   return (
     <WriteWrapper>
       <Select
+        styled={{ marginBottom: "20px" }}
         options={options}
         defaultValue={codeType}
         title="언어 종류"

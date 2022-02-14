@@ -7,6 +7,7 @@ import NewSubject from './pages/new/subject'
 import Login from './pages/login'
 import Setting from './pages/setting'
 import Subject from './pages/subject'
+import SignUp from './pages/signup'
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
         </Route>
         <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/signup">
+          <SignUp />
         </Route>
         <Route exact path="/setting">
           <Setting />

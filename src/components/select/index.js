@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const SelectContainer = styled.div`
     display: flex;
     flex-direction: row;
-    margin-bottom: 20px;
     align-items: center;
+    margin-bottom: ${(props) => props.marginBottom || "0px"};
 `
 
 const SelectTitle = styled.div`
@@ -27,13 +27,13 @@ const Option = styled.option`
     margin-right: 20px;
 `
 
-const Select = ({ options, defaultValue, title, setValue }) => {
+const Select = ({ options, defaultValue, title, setValue, styled }) => {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
 
   return (
-    <SelectContainer>
+    <SelectContainer marginBottom={styled.marginBottom}>
       <SelectTitle>{title}</SelectTitle>
       <Selecter onChange={handleChange}>
         {options.map((option) => (
