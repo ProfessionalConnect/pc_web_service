@@ -2,7 +2,6 @@ import { postNoHeader } from '../../../../utils/api';
 import { redirect } from '../../../../utils/redirect';
 import React from 'react'
 import styled from 'styled-components';
-import { setCookie } from '../../../../utils/cookie';
 import Select from '../../../../components/select';
 
 const SignUpViewContainer = styled.div`
