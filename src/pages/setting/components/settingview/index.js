@@ -109,6 +109,12 @@ const TeamTitle = styled.div`
     padding: 8px 0 0 0;
 `
 
+const TeamButtonWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`
+
 const TeamButton = styled.button`
     width: 102px;
     height: 35px;
@@ -181,6 +187,28 @@ const SettingView = () => {
       })
   }
 
+  const getTeamCode = (id) => {
+    get(`/api/v1/teams/ps/${id}/token`, {
+      headers: {
+        "X-AUTH-TOKEN": getCookie("access_token")
+      }
+    })
+      .then(response => {
+        alert(`팀 코드: ${response.data.teamToken}`)
+      })
+      .catch(error => {
+        if (error.response.status === 503) {
+          alert("시스템 준비 중입니다. 아래 이메일로 문의해주세요.")
+        } else if (error.response.status === 401) {
+          redirect("/login")
+        } else if (error.response.status === 404) {
+          alert("권한이 없습니다.")
+        } else {
+          alert("알 수 없는 오류가 발생하였습니다. 아래 이메일로 문의해주세요.")
+        }
+      })
+  }
+
   const deepCopyList = (origins) => {
     let deepCopies = []
     for (let origin of origins) {
@@ -210,14 +238,20 @@ const SettingView = () => {
       <TeamContainer>
         {teams && teams.map((element, index) => {
           const id = element.id
-
           return (
             <TeamElement key={index}>
               <TeamBody>
                 <TeamThumbail src={`${process.env.PUBLIC_URL}/icn_teams.png`} />
                 <TeamTitle>{element.teamName}</TeamTitle>
               </TeamBody>
-              <TeamButton onClick={() => { redirect(`/team/${id}`) }}>접속</TeamButton>
+              <TeamButtonWrapper>
+                <TeamButton onClick={() => { redirect(`/team/${id}`) }}>접속</TeamButton>
+                {role === "PRO" && <TeamButton
+                  style={{ marginLeft: "10px" }}
+                  onClick={() => { getTeamCode(id) }}>
+                  팀 코드 발급
+                </TeamButton>}
+              </TeamButtonWrapper>
             </TeamElement>
           )
         })}
@@ -229,7 +263,7 @@ const SettingView = () => {
           )
         }
       </TeamContainer>
-      <Middle isEdit={role === "PRO"} redirectURL="new/team" />
+      <Middle isEdit={role === "PRO"} redirectURL="/new/team" postTitle="Team" />
       <Footer />
     </SettingContainer>
   );

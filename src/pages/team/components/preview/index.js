@@ -206,7 +206,7 @@ const Preview = ({ id }) => {
         }
         {totalPage !== 0 && <PageBar page={page} setPage={setPage} totalPage={totalPage}></PageBar>}
       </BoardContainer>
-      <Middle isEdit={role === "PRO"} redirectURL="new/subject" />
+      <Middle isEdit={role === "PRO"} redirectURL="/new/subject" postTitle="Subject" />
       <Footer />
     </PreviewContainer>
   );

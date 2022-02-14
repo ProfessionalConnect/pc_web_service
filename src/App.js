@@ -3,6 +3,7 @@ import React from 'react'
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Team from './pages/team'
 import NewPost from './pages/post/new'
+import NewTeam from './pages/new/team'
 import OldPost from './pages/post/old'
 import Board from './pages/board'
 import Login from './pages/login'
@@ -15,6 +16,9 @@ function App() {
       <Switch>
         <Route exact path="/team/:id">
           <Team />
+        </Route>
+        <Route exact path="/new/team">
+          <NewTeam />
         </Route>
         <Route exact path="/subject/:id">
           <Subject />
