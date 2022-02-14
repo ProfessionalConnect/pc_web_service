@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react'
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import Main from './pages/main'
+import Team from './pages/team'
 import NewPost from './pages/post/new'
 import OldPost from './pages/post/old'
 import Board from './pages/board'
@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/team/:id">
-          <Main />
+          <Team />
         </Route>
         <Route exact path="/login">
           <Login />
@@ -30,7 +30,7 @@ function App() {
         <Route exact path="/board/:id">
           <Board />
         </Route>
-        <Redirect path="*" to="/main" />
+        <Redirect path="*" to="/setting" />
       </Switch>
     </BrowserRouter >
   );
