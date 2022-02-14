@@ -6,6 +6,7 @@ import Header from '../../../../components/header'
 import Middle from '../../../../components/middle'
 import Footer from '../../../../components/footer'
 import { getCookie } from '../../../../utils/cookie';
+import { deepCopyList } from '../../../../utils/util';
 
 const SettingContainer = styled.div`
     display: flex;
@@ -207,14 +208,6 @@ const SettingView = () => {
           alert("알 수 없는 오류가 발생하였습니다. 아래 이메일로 문의해주세요.")
         }
       })
-  }
-
-  const deepCopyList = (origins) => {
-    let deepCopies = []
-    for (let origin of origins) {
-      deepCopies.push(origin)
-    }
-    return deepCopies
   }
 
   const handleCode = (event) => {

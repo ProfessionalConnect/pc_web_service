@@ -8,7 +8,7 @@ import Middle from '../../../../../components/middle'
 import Footer from '../../../../../components/footer'
 import TeamWrite from '../../../../../components/teamwrite';
 
-const PostViewContainer = styled.div`
+const NewTeamViewContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,7 +57,7 @@ const EditView = () => {
   }
 
   return (
-    <PostViewContainer>
+    <NewTeamViewContainer>
       <Header name="New Team"></Header>
       <TeamWrite
         clickToUploadAction={uploadNewTeam}
@@ -67,7 +67,7 @@ const EditView = () => {
       ></TeamWrite>
       <Middle isEdit={false} postTitle="" />
       <Footer />
-    </PostViewContainer>
+    </NewTeamViewContainer>
   );
 }
 
