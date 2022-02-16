@@ -250,7 +250,7 @@ const SettingView = () => {
           )
         })}
         {
-          !teams && (
+          (!teams || teams.length === 0) && (
             <NoContentElement>
               속해 있는 팀이 없습니다.
             </NoContentElement>
