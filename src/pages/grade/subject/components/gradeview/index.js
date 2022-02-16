@@ -166,7 +166,8 @@ const GradeView = ({ id }) => {
 
   return (
     <GradeViewContainer>
-      <Header name="Subject Grade" redirectURL={`/subject/${id}`}></Header>
+      {role === "PRO" && <Header name="Subject Grade" redirectURL={`/setting`}></Header>}
+      {role !== "PRO" && <Header name="Subject Grade" redirectURL={`/subject/${id}`}></Header>}
       <GradeViewTitle>
         과제 제출 목록
       </GradeViewTitle>
