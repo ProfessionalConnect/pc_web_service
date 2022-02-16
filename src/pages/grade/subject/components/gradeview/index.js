@@ -61,7 +61,7 @@ const GradeViewTitleWrapper = styled.div`
     align-items: center;
 `
 
-const GradeViewUser = styled.div`
+const GradeViewResult = styled.div`
     display: flex;
     flex-direction: row;
     font-weight: bold;
@@ -71,6 +71,13 @@ const GradeViewUser = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+`
+
+const GradeViewUser = styled.div`
+    color: #807f89;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: Noto Sans KR;
 `
 
 const GradeViewTime = styled.div`
@@ -166,6 +173,7 @@ const GradeView = ({ id }) => {
       <GradeViewWrapper>
         {grades && grades.map((element, index) => {
           const id = element.id
+          const user = element.user
           var startMonent = moment(element.createdDate)
             .tz("Asia/Seoul")
             .format("YYYY.MM.DD HH:mm")
@@ -173,10 +181,11 @@ const GradeView = ({ id }) => {
           return (
             <GradeViewElement key={index}>
               <GradeViewTitleWrapper>
-                <GradeViewUser>{element.resultType}</GradeViewUser>
+                <GradeViewResult>{element.resultType}</GradeViewResult>
                 <PassIcon isPass={element.resultType === "SUCCESS"} />
                 <CodeIcon codeType={element.codeType} />
               </GradeViewTitleWrapper>
+              {user && <GradeViewUser>{user.nickname} 학생</GradeViewUser>}
               <ButtonWrapper>
                 <GradeViewTime>{startMonent}</GradeViewTime>
                 {codeFlags && codeFlags[index] &&

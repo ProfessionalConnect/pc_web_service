@@ -81,6 +81,13 @@ const BoardTitle = styled.div`
     white-space: nowrap;
 `
 
+const BoardUser = styled.div`
+    color: #807f89;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: Noto Sans KR;
+`
+
 const BoardTime = styled.div`
     color: #807f89;
     font-size: 14px;
@@ -169,6 +176,7 @@ const Preview = ({ id }) => {
       <BoardContainer>
         {subjects && subjects.map((element, index) => {
           const id = element.id
+          const user = element.user
           // var thumbnailUrl = element.thumbnailUrl
           var startMonent = moment(element.createdDate)
             .tz("Asia/Seoul")
@@ -188,6 +196,7 @@ const Preview = ({ id }) => {
                   {role === "MEMBER" && <PassIcon isPass={element.isPass} />}
                   <CodeIcon codeType={element.codeType} />
                 </BoardTitleWrapper>
+                {user && (<BoardUser>{user.nickname} 프로</BoardUser>)}
                 <BoardTime>{startMonent}</BoardTime>
                 <BoardDesc>{element.description}</BoardDesc>
                 <ButtonWrapper>
