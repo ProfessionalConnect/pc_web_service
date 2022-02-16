@@ -162,7 +162,7 @@ const Preview = ({ id }) => {
 
   return (
     <PreviewContainer>
-      <Header name="ProConnect"></Header>
+      <Header name="ProConnect" redirectURL="/setting"></Header>
       <PreviewTitle>
         전체 과제
       </PreviewTitle>
@@ -194,7 +194,7 @@ const Preview = ({ id }) => {
                   {role === "PRO" && <BoardButton onClick={() => { alert("준비중입니다") }}>과제 수정</BoardButton>}
                   {role === "PRO" && <BoardButton
                     style={{ marginLeft: "10px" }}
-                    onClick={() => { redirect(`/grade/${id}`) }}>
+                    onClick={() => { redirect(`/subject/grade/${id}`) }}>
                     학생 결과 보기
                   </BoardButton>}
                   {role !== "PRO" && <BoardButton onClick={() => { redirect(`/subject/${id}`) }}>과제 풀기</BoardButton>}

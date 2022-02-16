@@ -50,6 +50,7 @@ const GradeViewElement = styled.div`
     display: flex;
     flex-direction: column;
     border: 1px solid #dddddd;
+    padding: 4px;
     border-radius: 5px;
     margin-bottom: 4px;
 `
@@ -93,6 +94,7 @@ const GradeViewIcon = styled.img`
     width: 24px;
     height: 24px;
     margin-left: 20px;
+    cursor: pointer;
 `
 
 const GradeView = ({ id }) => {
