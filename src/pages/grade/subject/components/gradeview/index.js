@@ -131,7 +131,6 @@ const GradeView = ({ id }) => {
         }
       })
       .catch(error => {
-        console.log(error)
         if (error.response.status === 503) {
           alert("시스템 준비 중입니다. 아래 이메일로 문의해주세요.")
         } else if (error.response.status === 401) {
